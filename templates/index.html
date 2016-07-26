@@ -1,0 +1,9 @@
+<!-- 这是推荐页面-->
+{% extends "base.html" %}
+{% block body%}
+	<ul>
+	{% for news in new %}
+		<li><a href="http://www.baidu.com">{{news.title}}</a></li>
+	{% endfor %}
+	</ul>
+{% endblock%}
