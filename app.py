@@ -2,7 +2,7 @@
 from sqlalchemy import Column, String, create_engine, Integer
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, abort
 
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ class News(Base):
     title = Column(String(300), unique=True)
     source = Column(String(1500),unique=True)
     content = Column(String(10000),unique=True)
-    time = Column(String(30),unique=True)
+    time = Column(String(300),unique=True)
     # def __init__(self,title,source,content,time):
     #     self.title = title
     #     self.source = source
@@ -42,6 +42,12 @@ def index():
     new = session.query(News).all();
     return render_template('index.html',new=new)
 
+@app.route('/rec/<title>')
+def rec(title):
+    rec = session.query(News).filter_by(title = title).first()
+    if rec is None:
+        abort(404)
+    return render_template('article.html',rec = rec)
 if __name__ == '__main__':
     app.run(debug=True)
 

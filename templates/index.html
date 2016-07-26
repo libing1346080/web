@@ -1,9 +1,13 @@
 <!-- 这是推荐页面-->
 {% extends "base.html" %}
+{% block title%}
+	推荐新闻
+{% endblock%}
 {% block body%}
 	<ul>
 	{% for news in new %}
-		<li><a href="http://www.baidu.com">{{news.title}}</a></li>
+		<!-- 返回news.title作为回调参数，供后台查询。-->
+		<li><a href="/rec/{{news.title}}">{{news.title}}</a></li>
 	{% endfor %}
 	</ul>
 {% endblock%}
