@@ -1,0 +1,13 @@
+<!-- 这是推荐页面-->
+{% extends "base.html" %}
+{% block title%}
+	热点新闻
+{% endblock%}
+{% block body%}
+	<ul>
+	{% for news in new %}
+		<!-- 返回news.title作为回调参数，供后台查询。-->
+		<li><a href="/sports/{{news.title}}">{{news.title}}</a></li>
+	{% endfor %}
+	</ul>
+{% endblock%}

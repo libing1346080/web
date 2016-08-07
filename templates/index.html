@@ -1,13 +1,55 @@
 <!-- 这是推荐页面-->
 {% extends "base.html" %}
 {% block title%}
-	推荐新闻
+	热点新闻
 {% endblock%}
 {% block body%}
 	<ul>
 	{% for news in new %}
 		<!-- 返回news.title作为回调参数，供后台查询。-->
-		<li><a href="/rec/{{news.title}}">{{news.title}}</a></li>
+		<li><a href="/rec/{{news.title}}">{{news.title}} &nbsp; &nbsp;<em>{{news.count}}</em>次阅读量</a></li>
 	{% endfor %}
 	</ul>
+	<table border="3" cellspacing="10" align="center">
+		<tbody>
+	<div class="pagination  ">
+       <div class="row-fluid">
+    
+    	<td><div class="span3 offset2">
+            
+                <a href="/?page=1">首页</a>
+     
+        </div>
+        </td>
+ 
+        <td><div class="span3 offset2">
+            {% if pagination.has_prev %}
+                <a href="/?page={{ pagination.prev_num }}">上一页</a>
+            {% endif %}
+        </div>
+        </td>
+ 
+         
+          <!-- {% for i in range(total):%}  
+          <td> 
+        
+            <a href="/?page={{i+1}}">{{i+1}} &nbsp  &nbsp &nbsp  </a>   
+    	</td>
+          {%endfor%}  -->
+     
+ 		<td>
+        <div class="span3 ">
+ 
+            {% if pagination.has_next %}
+                <a href="/?page={{ pagination.next_num }}">下一页</a>
+            {% endif %}
+        </div></td>
+        <td><div class="span3 offset2">
+                <a href="/?page={{total}}">尾页</a>
+        </div>
+        </td>
+ 
+   </div>
+</div>
+</tbody></table>
 {% endblock%}

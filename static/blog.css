@@ -18,6 +18,10 @@ h6, .h6 {
   font-weight: normal;
   color: #333;
 }
+a:link    {color:blue;}
+a:visited {color:#a0522d;}
+a:hover   {color:red;}
+a:active  {color:yellow;}
 
 li {list-style-type: none}
 /*
@@ -164,4 +168,19 @@ li {list-style-type: none}
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
+}
+.pagination-page-info {
+    padding: .6em;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 12px;
+}
+.pagination-page-info b {
+    color: black;
+    background: #6aa6ed;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
 }

@@ -7,35 +7,58 @@
       <!--device-width自适应移动端宽度，initial-scale=1不进行缩放-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}">
+
     <title>{% block title%}{%endblock%}</title>
-    <!-- Bootstrap 核心样式文件 -->
-    <link href="CSS/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/blog.css" rel="stylesheet">
-  </head>
-  <body>
-    <!--<h1>你好，世界！</h1>-->
+
+    <link href="{{url_for("static",filename="blog.css")}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for("static",filename="css/bootstrap.min.css")}}" rel="stylesheet" type="text/css">
+
     <!-- jQuery CDN加速 -->
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!---bootstrap的核心JS文件必须放在jQuery文件之后，因为bootstrap基于jQuery -->
-    <script src="js/bootstrap.min.js"></script>
+    <script href="{{url_for("static",filename="js/bootstrap.min.js")}}" > </script>
+    <script type="text/javascript">
+var $ = jQuery.noConflict();
+$(function() {
+$('#tabsmenu').tabify();
+$(".toggle_container").hide();
+$(".trigger").click(function(){
+        $(this).toggleClass("active").next().slideToggle("slow");
+        return false;
+});
+});
+</script>
+  </head>
+  <body>
+    
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item" style="color: yellow"><strong>热点信息网</strong></a>
+          <a class="blog-nav-item active" style="color: red"><strong>热点信息网</strong></a>
 
-          <a class="blog-nav-item active" href="#">推荐</a>
-          <a class="blog-nav-item" href="#">娱乐</a>
-          <a class="blog-nav-item" href="#">体育</a>
-          <a class="blog-nav-item" href="#">科技</a>
-          <a class="blog-nav-item" href="#">金融</a>
-          <a class="blog-nav-item" href="#">军事</a>
-          <a class="blog-nav-item" href="#">汽车</a>
+          <a class="blog-nav-item " href="/">推荐</a>
+          <a class="blog-nav-item" href="/ent">娱乐</a>
+          <a class="blog-nav-item" href="/sports">体育</a>
+          <a class="blog-nav-item" href="/tech">科技</a>
+          <a class="blog-nav-item" href="/money">金融</a>
+          <a class="blog-nav-item" href="/war">军事</a>
+          <a class="blog-nav-item" href="/auto">汽车</a>
         </nav>
       </div>
     </div>
+  <!-- <ul class="nav nav-pills">
+    <li role="presentation">热点信息网</li>
+      <li role="presentation" class="active"><a href="/">推荐</a></li>
+     <li role="presentation"><a href="/ent"> Profile</a></li>
+    <li role="presentation"><a href="/sports">Messages</a></li>
+  </ul> -->
     
-    <div class="container" style="margin-left: 200px">
+    <div class="container" >
       {% block body%}{% endblock %}
     </div>
+    <script type=text/javascript src="{{
+    url_for('static', filename='jquery.js') }}"></script>
   </body>
 </html>
